@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Line Monitor</title>
+<meta name="theme-color" content="#0b0f17">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Line">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="/style.css">
+<script src="/app.js" defer></script>
+</head>
+<body>
+<main>
+  <header class="top">
+    <div>
+      <h1>Line Monitor</h1>
+      <p class="sub" id="sub">Pure Telecom · VDSL2</p>
+    </div>
+    <span class="pill" id="pill"><i></i><b id="pill-text">Loading</b></span>
+  </header>
+
+  <div class="banner" id="banner" hidden></div>
+
+  <section class="card hero">
+    <div class="label">Sync speed</div>
+    <div class="speeds">
+      <div class="speed">
+        <div class="mini"><span class="arrow down" aria-hidden="true">↓</span>Download</div>
+        <div><span class="big" id="ds-rate">–</span><span class="unit">Mbps</span></div>
+      </div>
+      <div class="speed up">
+        <div class="mini"><span class="arrow up" aria-hidden="true">↑</span>Upload</div>
+        <div><span class="mid" id="us-rate">–</span><span class="unit">Mbps</span></div>
+      </div>
+    </div>
+    <div class="bar"><span id="ds-bar"></span></div>
+    <div class="hint" id="max-text">Line maximum –</div>
+  </section>
+
+  <section class="grid">
+    <div class="card stat">
+      <div class="label">Attenuation ↓</div>
+      <div class="value"><span id="ds-att">–</span><span class="unit">dB</span></div>
+      <div class="chip" id="att-chip">–</div>
+      <div class="hint" id="us-att">Up –</div>
+    </div>
+    <div class="card stat">
+      <div class="label">Noise margin</div>
+      <div class="value"><span id="ds-nm">–</span><span class="unit">dB ↓</span></div>
+      <div class="chip" id="nm-chip">–</div>
+      <div class="hint" id="us-nm">Up –</div>
+    </div>
+    <div class="card stat">
+      <div class="label">Line up for</div>
+      <div class="value"><span id="uptime">–</span></div>
+      <div class="hint" id="reset-at">Last reset –</div>
+    </div>
+    <div class="card stat">
+      <div class="label">Drops · 24 h</div>
+      <div class="value"><span id="drops-24">–</span></div>
+      <div class="hint" id="drops-7">7 days –</div>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="row between">
+      <div class="seg" id="metric-seg" role="tablist">
+        <button data-metric="att" class="on">Attenuation</button>
+        <button data-metric="rate">Sync</button>
+        <button data-metric="nm">Margin</button>
+      </div>
+      <div class="seg small" id="range-seg">
+        <button data-range="24h" class="on">24h</button>
+        <button data-range="7d">7d</button>
+        <button data-range="30d">30d</button>
+      </div>
+    </div>
+    <div class="legend" id="legend"></div>
+    <div class="chart" id="chart"></div>
+  </section>
+
+  <section class="card">
+    <div class="row between">
+      <h2>Line drops &amp; resets</h2>
+      <span class="hint" id="drops-range"></span>
+    </div>
+    <div id="drops"></div>
+  </section>
+
+  <footer>
+    <div id="updated">Not refreshed yet</div>
+    <div id="device"></div>
+  </footer>
+</main>
+
+<button class="fab" id="refresh" aria-label="Refresh">
+  <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M20 11a8 8 0 1 0-2.3 5.7M20 5v6h-6"/></svg>
+  <span>Refresh</span>
+</button>
+</body>
+</html>

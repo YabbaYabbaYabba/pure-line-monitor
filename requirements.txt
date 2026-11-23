@@ -1,0 +1,3 @@
+aiohttp>=3.9,<4
+sagemcom_api==1.6.0
+tzdata>=2024.1
